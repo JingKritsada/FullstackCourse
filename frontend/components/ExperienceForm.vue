@@ -1,49 +1,43 @@
 <script setup>
-// TODO: 1. define props and emits
-// const props = defineProps({
-//     experiences: Array,
-// });
+const props = defineProps({
+    experiences: Array,
+});
 
-// const emits = defineEmits(['submit', 'cancel']);
+const emits = defineEmits(['submit', 'cancel']);
 
-// TODO: 2. useForm from vee-validate
-// const { handleSubmit, isSubmitting } = useForm({
-//     validationSchema: useExperiencesValidationSchema(),
-//     validateOnInput: true,
-//     keepValuesOnUnmount: true,
-//     initialValues: {
-//         experiences: props.experiences,
-//     }
-// });
+const { handleSubmit, isSubmitting } = useForm({
+    validationSchema: useExperiencesValidationSchema(),
+    validateOnInput: true,
+    keepValuesOnUnmount: true,
+    initialValues: {
+        experiences: props.experiences,
+    }
+});
 
-// TODO: 4. useFieldArray from vee-validate
-// const { remove, prepend, fields } = useFieldArray('experiences');
+const { remove, prepend, fields } = useFieldArray('experiences');
 
-// TODO: 5. implement prepend and remove
-// const onAdd = () => prepend({
-//     logo: '',
-//     title: '',
-//     company: '',
-//     type: '',
-//     start: '',
-//     end: '',
-//     skills: [],
-//     detail: '',
-// })
+const onAdd = () => prepend({
+    logo: '',
+    title: '',
+    company: '',
+    type: '',
+    start: '',
+    end: '',
+    skills: [],
+    detail: '',
+})
 
-// const onRemove = (idx) => {
-//     remove(idx)
-// };
+const onRemove = (idx) => {
+    remove(idx)
+};
 
-// TODO: 6. onSubmit
-// const onSubmit = handleSubmit(values => {
-//     emits('submit', values);
-// })
+const onSubmit = handleSubmit(values => {
+    emits('submit', values);
+})
 </script>
 
 <template>
-    <!-- TODO: 7. show + new component ExperienceFormField -->
-    <!-- <form @submit="onSubmit">
+    <form @submit="onSubmit">
         <h2 class="text-xl font-bold mb-3 flex justify-between">
             <span class="space-x-2">
                 <span>Experiences</span>
@@ -74,5 +68,5 @@
                 />
             </li>
         </ol>
-    </form> -->
+    </form>
 </template>
