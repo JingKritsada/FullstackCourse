@@ -1,10 +1,9 @@
 <script setup>
-// TODO: 12. import stores to use
-// import { useAuthStore } from '@/stores/auth';
-// import { useProfileStore } from '@/stores/profile';
+import { useAuthStore } from '@/stores/auth';
+import { useProfileStore } from '@/stores/profile';
 
-// const authStore = useAuthStore();
-// const store = useProfileStore();
+const authStore = useAuthStore();
+const store = useProfileStore();
 
 useHead({
     title: 'Pichet Itngam\'s portfolios',
@@ -58,14 +57,13 @@ const portfolios = [
     }
 ];
 
-// TODO: 13. call get profile action
-// await store.getProfile();
+// กำหนดให้ทุกครั้งที่เข้ามาหน้านี้ จะทำการดึงข้อมูลของ profile ของ user นั้นๆ อัตโนมัติ
+await store.getProfile();
 </script>
 
 <template>
     <section class="mb-10">
-        <!-- TODO: 14. inject the actions and states into each parameter -->
-        <!-- <BaseEditable :edit-mode="store.skillsEditMode">
+        <BaseEditable :edit-mode="store.skillsEditMode">
             <template #view>
                 <SkillList
                     :skills="store.profile.overallSkills"
@@ -80,7 +78,7 @@ const portfolios = [
                     @submit="store.saveSkills"
                 />
             </template>
-        </BaseEditable> -->
+        </BaseEditable>
     </section>
     <section class="mb-10">
         <ExperienceList
