@@ -1,31 +1,30 @@
 <script setup>
-// TODO: 4. implement portfolio form
-// const props = defineProps({
-//     portfolio: Object,
-//     canDelete: {
-//         type: Boolean,
-//         default: false,
-//     },
-// })
+const props = defineProps({
+    portfolio: Object,
+    canDelete: {
+        type: Boolean,
+        default: false,
+    },
+})
 
-// const emits = defineEmits(['submit', 'cancel', 'delete']);
+const emits = defineEmits(['submit', 'cancel', 'delete']);
 
-// const { handleSubmit, isSubmitting } = useForm({
-//     validationSchema: usePortfolioValidationSchema(),
-//     validateOnInput: true,
-//     keepValuesOnUnmount: true,
-//     initialValues: props.portfolio,
-// });
+const { handleSubmit, isSubmitting } = useForm({
+    validationSchema: usePortfolioValidationSchema(),
+    validateOnInput: true,
+    keepValuesOnUnmount: true,
+    initialValues: props.portfolio,
+});
 
-// const { remove, push, fields } = useFieldArray('images');
+const { remove, push, fields } = useFieldArray('images');
 
-// const onSubmit = handleSubmit(values => {
-//     emits('submit', values);
-// })
+const onSubmit = handleSubmit(values => {
+    emits('submit', values);
+})
 </script>
 
 <template>
-    <!-- <form @submit="onSubmit">
+    <form @submit="onSubmit">
         <div class="flex justify-between">
             <span></span>
             <BaseFormPanel
@@ -112,5 +111,5 @@
                 Delete this portfolio
             </BaseButton>
         </div>
-    </form> -->
+    </form>
 </template>

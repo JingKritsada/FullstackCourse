@@ -1,39 +1,34 @@
 <script setup>
-// TODO: 6. implement page
-// import { useAuthStore } from '@/stores/auth';
-// import { usePortfolioStore } from '@/stores/portfolio';
+import { useAuthStore } from '@/stores/auth';
+import { usePortfolioStore } from '@/stores/portfolio';
 
-// const authStore = useAuthStore();
-// const store = usePortfolioStore();
+const authStore = useAuthStore();
+const store = usePortfolioStore();
+const route = useRoute();
 
-// TODO: 7. use route
-// const route = useRoute();
+if (authStore.canEdit && typeof route.query.edit != 'undefined') {
+    store.enterEditMode();
+}
 
-// if (authStore.canEdit && typeof route.query.edit != 'undefined') {
-//     store.enterEditMode();
-// }
+await store.getPortfolio(route.params.id);
 
-// await store.getPortfolio(route.params.id);
+if (!store.portfolio) {
+    throw createError({
+        statusCode: 404,
+        statusMessage: 'Not found this portfolio.'
+    });
+}
 
-// if (!store.portfolio) {
-//     // TODO: 78 Nuxt custom error function
-//     throw createError({
-//         statusCode: 404,
-//         statusMessage: 'Not found this portfolio.'
-//     })
-// }
-
-// useHead({
-//     title: `${store.portfolio.title} | Pichet Itngam`,
-//     meta: [
-//         { name: 'description', content: store.portfolio.excerpt }
-//     ],
-// })
+useHead({
+    title: `${store.portfolio.title} | Pichet Itngam`,
+    meta: [
+        { name: 'description', content: store.portfolio.excerpt }
+    ],
+})
 </script>
 
 <template>
-    <!-- TODO: 9. show -->
-    <!-- <BaseEditable :edit-mode="store.editMode">
+    <BaseEditable :edit-mode="store.editMode">
         <template #view>
             <Portfolio
                 :portfolio="store.portfolio"
@@ -50,5 +45,5 @@
                 @delete="store.deletePortfolio(route.params.id)"
             />
         </template>
-    </BaseEditable> -->
+    </BaseEditable>
 </template>

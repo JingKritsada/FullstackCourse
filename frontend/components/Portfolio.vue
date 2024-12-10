@@ -1,13 +1,12 @@
 <script setup>
-// TODO: 2. implement view component
-// import moment from 'moment';
+import moment from 'moment';
 
-// defineProps({
-//     portfolio: Object,
-//     canEdit: Boolean,
-// })
+defineProps({
+    portfolio: Object,
+    canEdit: Boolean,
+})
 
-// defineEmits(['edit'])
+defineEmits(['edit'])
 </script>
 
 <template>
@@ -29,7 +28,6 @@
         </BaseButton>
     </div>
     <section class="mt-4">
-        <!-- TODO: 3. carousel from lib -->
         <BaseCarousel :items-to-show="1.5">
             <BaseSlide
                 v-for="(image, index) in portfolio.images"
