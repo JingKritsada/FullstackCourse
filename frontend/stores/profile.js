@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia';
 import { useAuthStore } from '@/stores/auth'
 import { getProfileAPI, saveProfileAPI } from '@/repositories/profile';
-// TODO: 2. import the repository
-// import { getPortfoliosAPI } from '@/repositories/portfolio';
+import { getPortfoliosAPI } from '@/repositories/portfolio';
 
 export const useProfileStore = defineStore('profile', () => {
     const profile = ref({
@@ -10,10 +9,9 @@ export const useProfileStore = defineStore('profile', () => {
         experiences: [],
     });
 
-    // TODO: 3. prepare states of portfolio
-    // const portfolios = ref([])
-    // const isGettingPortfolios = ref(false);
-    // const hasMorePortfolios = ref(true);
+    const portfolios = ref([])
+    const isGettingPortfolios = ref(false);
+    const hasMorePortfolios = ref(true);
 
     const skillsEditMode = ref(false);
     const experiencesEditMode = ref(false);
@@ -36,29 +34,28 @@ export const useProfileStore = defineStore('profile', () => {
         }
     }
 
-    // TODO: 4. implement an action to get portfolios
-    // async function getPortfolios(page, limit) {
-    //     isGettingPortfolios.value = true;
+    async function getPortfolios(page, limit) {
+        isGettingPortfolios.value = true;
 
-    //     try {
-    //         const { data: response, error, status } = await getPortfoliosAPI(page, limit);
-    //         if (status == 'error') {
-    //             throw new Error(error);
-    //         }
+        try {
+            const { data: response, error, status } = await getPortfoliosAPI(page, limit);
+            if (status == 'error') {
+                throw new Error(error);
+            }
 
-    //         hasMorePortfolios.value = response.value.length >= limit;
+            hasMorePortfolios.value = response.value.length >= limit;
 
-    //         if (page == 1) {
-    //             portfolios.value = response.value;
-    //         } else {
-    //             portfolios.value = [...portfolios.value, ...response.value];
-    //         }
-    //     } catch (error) {
-    //         throw new Error(error);
-    //     } finally {
-    //         isGettingPortfolios.value = false;
-    //     }
-    // }
+            if (page == 1) {
+                portfolios.value = response.value;
+            } else {
+                portfolios.value = [...portfolios.value, ...response.value];
+            }
+        } catch (error) {
+            throw new Error(error);
+        } finally {
+            isGettingPortfolios.value = false;
+        }
+    }
 
     async function saveSkills(draftedSkills) {
         const authStore = useAuthStore();
@@ -124,17 +121,16 @@ export const useProfileStore = defineStore('profile', () => {
         experiencesEditMode.value = false;
     }
 
-    // TODO: 5. return states and actions
     return {
         profile,
         skillsEditMode,
         experiencesEditMode,
         hasMoreExperiences,
-        // portfolios,
-        // isGettingPortfolios,
-        // hasMorePortfolios,
+        portfolios,
+        isGettingPortfolios,
+        hasMorePortfolios,
         getProfile,
-        // getPortfolios,
+        getPortfolios,
         saveSkills,
         saveExperiences,
         isExperienceVisible,

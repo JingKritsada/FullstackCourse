@@ -30,23 +30,19 @@ useHead({
 //     }
 // ];
 
-// TODO: 6. define local state
-// const limit = 2;
-// const currentPortfoliosPage = ref(1);
+const limit = 2;
+const currentPortfoliosPage = ref(1);
 
 await store.getProfile();
+await store.getPortfolios(currentPortfoliosPage.value, limit);
 
-// TODO: 7. get portfolios for the first time
-// await store.getPortfolios(currentPortfoliosPage.value, limit);
+const onPortfoliosMore = async () => {
+    const nextPage = currentPortfoliosPage.value + 1;
 
-// TODO: 8. get more portfolios handler
-// const onPortfoliosMore = async () => {
-//     const nextPage = currentPortfoliosPage.value + 1;
+    await store.getPortfolios(nextPage, limit);
 
-//     await store.getPortfolios(nextPage, limit);
-
-//     currentPortfoliosPage.value = nextPage;
-// }
+    currentPortfoliosPage.value = nextPage;
+}
 </script>
 
 <template>
@@ -91,19 +87,11 @@ await store.getProfile();
     </section>
     <section class="mb-10">
         <PortfolioList
-            :portfolios="portfolios"
-            :can-edit="true"
-            :is-getting-portfolios="false"
-            :has-more-portfolios="true"
-            @more="console.log('clicked on more')"
-        />
-        <!-- TODO: 9. show on the UI -->
-        <!-- <PortfolioList
             :portfolios="store.portfolios"
             :can-edit="authStore.canEdit"
             :is-getting-portfolios="store.isGettingPortfolios"
             :has-more-portfolios="store.hasMorePortfolios"
             @more="onPortfoliosMore"
-        /> -->
+        />
     </section>
 </template>
