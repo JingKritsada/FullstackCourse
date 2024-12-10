@@ -80,8 +80,7 @@ await store.getProfile();
         </BaseEditable>
     </section>
     <section class="mb-10">
-        <!-- TODO: 10. show -->
-        <!-- <BaseEditable :edit-mode="true">
+        <BaseEditable :edit-mode="true">
             <template #view?>
                 <ExperienceList
                     :experiences="experiences"
@@ -99,7 +98,7 @@ await store.getProfile();
                     @submit="console.log('clicked on save')"
                 />
             </template>
-        </BaseEditable> -->
+        </BaseEditable>
     </section>
     <section class="mb-10">
         <PortfolioList
