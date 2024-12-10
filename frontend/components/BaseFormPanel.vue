@@ -1,16 +1,13 @@
 <script setup>
-// TODO: 8. props
-// const props = defineProps({
-//     isSaving: Boolean,
-// });
+const props = defineProps({
+    isSaving: Boolean,
+});
 
-// TODO: 9. emits
-// defineEmits(['cancel', 'save']);
+defineEmits(['cancel', 'save']);
 </script>
 
 <template>
-    <!-- TODO: 10. show -->
-    <!-- <div class="space-x-2">
+    <div class="space-x-2">
         <BaseButton
             size="small"
             variant="secondary"
@@ -19,6 +16,7 @@
         >
             Cancel
         </BaseButton>
+        
         <BaseButton
             v-if="!isSaving"
             size="small"
@@ -35,5 +33,5 @@
         >
             Saving
         </BaseButton>
-    </div> -->
+    </div>
 </template>

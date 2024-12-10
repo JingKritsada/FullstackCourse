@@ -1,9 +1,8 @@
 import * as yup from 'yup';
 
-// TODO: enable useSkillsValidationSchema
-// export const useSkillsValidationSchema = () => yup.object({
-//     skills: yup.array().min(1).of(yup.string().min(1)).label('skills'),
-// });
+export const useSkillsValidationSchema = () => yup.object({
+    skills: yup.array().min(1).of(yup.string().min(1)).label('Skills'),
+});
 
 // export const useExperienceValidationSchema = () => yup.object({
 //     title: yup.string().required().label('Title'),

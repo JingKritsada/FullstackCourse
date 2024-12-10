@@ -1,41 +1,34 @@
 <script setup>
-// TODO: 11. import
-// import TagsInput from 'vue3-tags-input';
+import TagsInput from 'vue3-tags-input';
 
-// TODO: 12. prevet fallthrough
-// defineOptions({
-//     inheritAttrs: false,
-// });
+defineOptions({
+    inheritAttrs: false,
+});
 
-// TODO: 13. design props
-// const props = defineProps({
-//     name: String,
-//     modelValue: Array,
-// });
+const props = defineProps({
+    name: String,
+    modelValue: Array,
+});
 
-// TODO: 14. use vee-validate composable
-// const { value, errorMessage } = useField(() => props.name, undefined, {
-//     syncVModel: true,
-// });
+const { value, errorMessage } = useField(() => props.name, undefined, {
+    syncVModel: true,
+});
 
-// TODO: 15. dynamic style
-// const style = computed(() => {
-//     if (errorMessage.value) {
-//         return 'error';
-//     }
+const style = computed(() => {
+    if (errorMessage.value) {
+        return 'error';
+    }
 
-//     return '';
-// })
+    return '';
+})
 
-// TODO: 16. handle on tags change
-// const onTagsChanged = (tags) => {
-//     value.value = tags;
-// }
+const onTagsChanged = (tags) => {
+    value.value = tags;
+}
 </script>
 
 <template>
-    <!-- TODO: 17. handle submit -->
-    <!-- <div :class="style">
+    <div :class="style">
         <TagsInput
             @on-tags-changed="onTagsChanged"
             :add-tag-on-keys="[13, 188]"
@@ -43,12 +36,11 @@
             v-bind="$attrs"
         />
         <BaseErrorMessage v-if="errorMessage">{{ errorMessage }}</BaseErrorMessage>
-    </div> -->
+    </div>
 </template>
 
 <style lang="css">
-/** TODO: 18. css to custom style */
-/* .error .v3ti {
+.error .v3ti {
     border-color: #E0115F;
 }
 
@@ -73,5 +65,5 @@
     background: '#0A6EBD';
     font-size: .875rem;
     padding: 0.25rem 0.75rem;
-} */
+}
 </style>

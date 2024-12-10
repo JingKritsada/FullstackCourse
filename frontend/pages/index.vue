@@ -59,12 +59,11 @@ const portfolios = [
             :can-edit="true"
             @edit="console.log('clicked on edit')"
         />
-        <!-- 19. TODO: -->
-        <!-- <SkillForm
+        <SkillForm
             :skills="['a', 'b']"
             @submit="console.log('submitted')"
             @cancel="console.log('clicked on cancel')"
-        /> -->
+        />
     </section>
     <section class="mb-10">
         <ExperienceList
