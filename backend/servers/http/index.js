@@ -7,12 +7,10 @@ import { errorHandler } from '#app/servers/http/middlewares/errors';
 
 export default ({
     authService,
-    // TODO: 6. Get from outside
-    // profileService,
+    profileService,
 }, config) => {
     const app = express();
     const auth = useAuthHandlers({ authService }, config.http);
-    // TODO: 7. inject into the handler
     const profile = useProfileHandlers({ profileService }, config.http);
     const portfolio = usePortfolioHandlers({}, config.http);
 

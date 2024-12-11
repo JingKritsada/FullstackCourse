@@ -4,8 +4,7 @@ import useServices from '#app/di/services';
 
 const {
     authService,
-    // TODO: 1. get profile service from dependency injection
-    // profileService,
+    profileService,
 } = useServices({}, {
     jwt: {
         secret: process.env.JWT_SECRET,
@@ -15,8 +14,7 @@ const {
 
 const servers = useServers({
     authService,
-    // TODO: 5. inject into the API Layer
-    // profileService,
+    profileService,
 }, {
     http: {
         port: process.env.APP_PORT,
