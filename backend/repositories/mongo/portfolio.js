@@ -1,99 +1,92 @@
 import { Schema } from 'mongoose';
 
 export default (connection) => {
-    // TODO: 14. define schema
-    // const PortfolioModel = connection.model('Portfolio', new Schema({
-    //     cover: String,
-    //     images: [String],
-    //     title: String,
-    //     content: String,
-    //     skills: [String],
-    //     publishedAt: Date,
-    // }));
+    const PortfolioModel = connection.model('Portfolio', new Schema({
+        cover: String,
+        images: [String],
+        title: String,
+        content: String,
+        skills: [String],
+        publishedAt: Date,
+    }));
 
-    // TODO: 15. return only use
-    // function toPortfolio(portfolio) {
-    //     return {
-    //         id: portfolio.id,
-    //         cover: portfolio.cover,
-    //         images: portfolio.images,
-    //         title: portfolio.title,
-    //         content: portfolio.content,
-    //         excerpt: portfolio.content.substring(0, 80),
-    //         skills: portfolio.skills,
-    //         publishedAt: portfolio.publishedAt,
-    //     }
-    // }
+    function toPortfolio(portfolio) {
+        return {
+            id: portfolio.id,
+            cover: portfolio.cover,
+            images: portfolio.images,
+            title: portfolio.title,
+            content: portfolio.content,
+            excerpt: portfolio.content.substring(0, 80),
+            skills: portfolio.skills,
+            publishedAt: portfolio.publishedAt,
+        }
+    }
 
-    // TODO: 16. implement get portfolios
-    // async function getPortfolios(offset, limit) {
-    //     let portfolios;
+    async function getPortfolios(offset, limit) {
+        let portfolios;
 
-    //     try {
-    //         portfolios = await PortfolioModel.where({}).skip(offset).limit(limit).find();
-    //     } catch (error) {
-    //         throw new Error(error);
-    //     }
+        try {
+            portfolios = await PortfolioModel.where({}).skip(offset).limit(limit).find();
+        } catch (error) {
+            throw new Error(error);
+        }
 
-    //     return portfolios.map(portfolio => toPortfolio(portfolio));
-    // }
+        return portfolios.map(portfolio => toPortfolio(portfolio));
+    }
 
-    // TODO: 17. implement get portfolio
-    // async function getPortfolio(id) {
-    //     let portfolio;
+    async function getPortfolio(id) {
+        let portfolio;
 
-    //     try {
-    //         portfolio = await PortfolioModel.where({ _id: id }).findOne();
-    //     } catch (error) {
-    //         throw new Error(error);
-    //     }
+        try {
+            portfolio = await PortfolioModel.where({ _id: id }).findOne();
+        } catch (error) {
+            throw new Error(error);
+        }
 
-    //     return toPortfolio(portfolio);
-    // }
+        return toPortfolio(portfolio);
+    }
 
-    // TODO: 18. implement create portfolio
-    // async function createPortfolio(draftedPortfolio) {
-    //     let portfolio;
+    async function createPortfolio(draftedPortfolio) {
+        let portfolio;
 
-    //     try {
-    //         portfolio = new PortfolioModel(draftedPortfolio);
-    //         portfolio = await portfolio.save();
-    //     } catch (error) {
-    //         throw new Error(error);
-    //     }
+        try {
+            portfolio = new PortfolioModel(draftedPortfolio);
+            portfolio = await portfolio.save();
+        } catch (error) {
+            throw new Error(error);
+        }
 
-    //     return toPortfolio(portfolio);
-    // }
+        return toPortfolio(portfolio);
+    }
 
-    // TODO: 19. implement update portfolio
-    // async function updatePortfolio(id, draftedPortfolio) {
-    //     let portfolio;
+    async function updatePortfolio(id, draftedPortfolio) {
+        let portfolio;
 
-    //     try {
-    //         portfolio = await PortfolioModel.findOneAndUpdate({ _id: id }, {
-    //             $set: draftedPortfolio,
-    //         }, {
-    //             new: true,
-    //         });
-    //     } catch (error) {
-    //         throw new Error(error);
-    //     }
+        try {
+            portfolio = await PortfolioModel.findOneAndUpdate({ _id: id }, {
+                $set: draftedPortfolio,
+            }, {
+                new: true,
+            });
+        } catch (error) {
+            throw new Error(error);
+        }
 
-    //     return toPortfolio(portfolio);
-    // }
+        return toPortfolio(portfolio);
+    }
 
-    // TODO: 20. implement delete portfolio
-    // async function deletePortfilio(id) {
-    //     let result;
+    async function deletePortfilio(id) {
+        let result;
 
-    //     try {
-    //         result = await PortfolioModel.deleteOne({ _id: id });
-    //     } catch (error) {
-    //         throw new Error(error);
-    //     }
+        try {
+            result = await PortfolioModel.deleteOne({ _id: id });
+        } catch (error) {
+            throw new Error(error);
+        }
 
-    //     return result.deletedCount > 0;
-    // }
+        return result.deletedCount > 0;
+    }
 
     return {
         getPortfolios,

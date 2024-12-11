@@ -1,8 +1,7 @@
 import { usePortfolioValidationSchema, useIdValidationSchema } from '#app/utils/validation';
 
 export default ({
-    // TODO: 8. get from outside
-    // portfolioRepo
+    portfolioRepo
 }) => {
     const validateSchema = usePortfolioValidationSchema();
     const idValidationSchema = useIdValidationSchema();
@@ -25,27 +24,22 @@ export default ({
         const sanitizedLimit = Math.min(limit, 10);
         const offset = (sanitizedPage - 1) * sanitizedLimit;
 
-        // TODO: 9. use repo
-        // portfolios = await portfolioRepo.getPortfolios(offset, sanitizedLimit);
+        portfolios = await portfolioRepo.getPortfolios(offset, sanitizedLimit);
 
         return portfolios;
     }
 
     async function getPortfolio(id) {
         const validatedId = await idValidationSchema.validate(id);
-        // TODO: 10. use repo
-        // const portfolio = await portfolioRepo.getPortfolio(validatedId);
+        const portfolio = await portfolioRepo.getPortfolio(validatedId);
 
         return portfolio;
     }
 
     async function createPortfolio(draftedPortfolio) {
         const validatedPortfolio = await validateSchema.validate(draftedPortfolio);
-
         const sanitizedPortfolio = sanitizePortfolio(validatedPortfolio);
-
-        // TODO: 11. use repo
-        // const portfolio = await portfolioRepo.createPortfolio(sanitizedPortfolio);
+        const portfolio = await portfolioRepo.createPortfolio(sanitizedPortfolio);
 
         return portfolio;
     }
@@ -53,11 +47,9 @@ export default ({
     async function updatePortfolio(id, draftedPortfolio) {
         const validatedPortfolio = await validateSchema.validate(draftedPortfolio);
         const validatedId = await idValidationSchema.validate(id);
-
         const sanitizedPortfolio = sanitizePortfolio(validatedPortfolio);
 
-        // TODO: 12. use repo
-        // const portfolio = await portfolioRepo.updatePortfolio(validatedId, sanitizedPortfolio);
+        const portfolio = await portfolioRepo.updatePortfolio(validatedId, sanitizedPortfolio);
 
         return portfolio;
     }
@@ -65,9 +57,7 @@ export default ({
     async function deletePortfolio(id) {
 
         const validatedId = await idValidationSchema.validate(id);
-
-        // TODO: 13. use repo
-        // const result = await portfolioRepo.deletePortfilio(validatedId);
+        const result = await portfolioRepo.deletePortfilio(validatedId);
 
         return result;
     }
