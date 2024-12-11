@@ -1,15 +1,13 @@
 import express from 'express';
 import cors from 'cors';
-// import useAuthHandlers from '#app/servers/http/handlers/auth';
+import useAuthHandlers from '#app/servers/http/handlers/auth';
 import useProfileHandlers from '#app/servers/http/handlers/profile';
 import usePortfolioHandlers from '#app/servers/http/handlers/portfolio';
 import { errorHandler } from '#app/servers/http/middlewares/errors';
 
-// TODO: 8. inject authService
-export default ({ }, config) => {
+export default ({ authService }, config) => {
     const app = express();
-    // TODO: 9. pass authService
-    // const auth = useAuthHandlers({ authService }, config.http);
+    const auth = useAuthHandlers({ authService }, config.http);
     const profile = useProfileHandlers({}, config.http);
     const portfolio = usePortfolioHandlers({}, config.http);
 

@@ -1,8 +1,7 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
 
-// TODO: 10. destruct authService
-export default ({ }, config) => {
+export default ({ authService }, config) => {
     function router() {
         const router = express.Router();
 
@@ -13,13 +12,12 @@ export default ({ }, config) => {
     }
 
     async function login(req, res) {
-        // TODO: 11. use service
-        // const body = req.body;
+        const body = req.body;
 
-        // const result = await authService.login(body.username, body.password);
+        const result = await authService.login(body.username, body.password);
 
-        // const token = result.token;
-        // const status = result.status;
+        const token = result.token;
+        const status = result.status;
 
         res.status(200).json({
             token,
@@ -28,10 +26,9 @@ export default ({ }, config) => {
     }
 
     async function register(req, res) {
-        // TODO: 12. use service
-        // const body = req.body;
+        const body = req.body;
 
-        // const status = await authService.register(body.username, body.password);
+        const status = await authService.register(body.username, body.password);
 
         res.status(200).json({
             status,

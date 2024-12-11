@@ -1,11 +1,10 @@
 export const errorHandler = (err, req, res, next) => {
-    // TODO: 20. hadle validation error
-    // if (err.name && err.name == 'ValidationError') {
-    //     res.status(400).json({
-    //         error: err.message
-    //     });
-    //     return;
-    // }
+    if (err.name && err.name == 'ValidationError') {
+        res.status(400).json({
+            error: err.message
+        });
+        return;
+    }
 
     if (err.name && err.name == 'UnauthorizedError') {
         res.status(401).json({
