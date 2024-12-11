@@ -5,8 +5,7 @@ import useRepos from '#app/di/repositories';
 
 const {
     userRepo,
-    // TODO: 1. get profile repo
-    // profileRepo,
+    profileRepo,
 } = useRepos({
     db: {
         mongo: {
@@ -21,8 +20,7 @@ const {
     portfolioService,
 } = useServices({
     userRepo,
-    // TODO: 2. inject profile repo
-    // profileRepo,
+    profileRepo,
 }, {
     jwt: {
         secret: process.env.JWT_SECRET,

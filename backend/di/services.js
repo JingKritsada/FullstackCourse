@@ -4,12 +4,10 @@ import usePortfolioService from '#app/services/portfolio';
 
 export default ({
     userRepo,
-    // TODO: 6. get from outside
-    // profileRepo,
+    profileRepo,
 }, config) => {
     const authService = useAuthService({ userRepo }, config.jwt);
-    // TODO: 7. inject profile repo
-    const profileService = useProfileService({});
+    const profileService = useProfileService({ profileRepo});
     const portfolioService = usePortfolioService({});
 
     return {
