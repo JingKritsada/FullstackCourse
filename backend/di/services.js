@@ -3,11 +3,9 @@ import useProfileService from '#app/services/profile';
 import usePortfolioService from '#app/services/portfolio';
 
 export default ({
-    // TODO: 10. get from outside
-    // userRepo
+    userRepo
 }, config) => {
-    // TODO: 11. inject to service
-    const authService = useAuthService({}, config.jwt);
+    const authService = useAuthService({ userRepo }, config.jwt);
     const profileService = useProfileService({});
     const portfolioService = usePortfolioService({});
 
