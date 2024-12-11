@@ -8,14 +8,12 @@ import { errorHandler } from '#app/servers/http/middlewares/errors';
 export default ({
     authService,
     profileService,
-    // TODO: 8. get portfolioService
-    // portfolioService,
+    portfolioService,
 }, config) => {
     const app = express();
     const auth = useAuthHandlers({ authService }, config.http);
     const profile = useProfileHandlers({ profileService }, config.http);
-    // TODO: 9. inject portfolioService
-    // const portfolio = usePortfolioHandlers({ portfolioService }, config.http);
+    const portfolio = usePortfolioHandlers({ portfolioService }, config.http);
 
     app.use(express.json());
     app.use(cors(config.http.cors));

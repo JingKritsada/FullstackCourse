@@ -1,6 +1,5 @@
 import * as yup from 'yup';
-// TODO: import types
-// import { Types } from 'mongoose';
+import { Types } from 'mongoose';
 
 export const useAuthValidationSchema = () => yup.object({
     username: yup.string().required().label('Username'),
@@ -26,23 +25,21 @@ export const useExperienceValidationSchema = () => yup.object({
     detail: yup.string().required().label('Detail of archievements'),
 });
 
-// TODO: portfolio validation
-// export const usePortfolioValidationSchema = () => yup.object({
-//     cover: yup.string().nullable().url().label('Logo'),
-//     images: yup.array().min(1).of(yup.string().url().label('Image')),
-//     title: yup.string().required().label('Title'),
-//     content: yup.string().required().label('Content'),
-//     skills: yup.array().min(1).of(yup.string().min(1)).label('Skills'),
-//     publishedAt: yup.date().typeError('Invalid Date').required().label('Published At'),
-// })
+export const usePortfolioValidationSchema = () => yup.object({
+    cover: yup.string().nullable().url().label('Logo'),
+    images: yup.array().min(1).of(yup.string().url().label('Image')),
+    title: yup.string().required().label('Title'),
+    content: yup.string().required().label('Content'),
+    skills: yup.array().min(1).of(yup.string().min(1)).label('Skills'),
+    publishedAt: yup.date().typeError('Invalid Date').required().label('Published At'),
+})
 
-// TODO: id validation
-// export const useIdValidationSchema = () => yup.string()
-//     .test(
-//         "is-objectid",
-//         "${path} is not a valid ObjectId",
-//         value => value === undefined || Types.ObjectId.isValid(value)
-//     );
+export const useIdValidationSchema = () => yup.string()
+    .test(
+        "is-objectid",
+        "${path} is not a valid ObjectId",
+        value => value === undefined || Types.ObjectId.isValid(value)
+    );
 
 export class ValidationError extends Error {
     constructor(message) {
