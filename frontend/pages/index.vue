@@ -6,9 +6,9 @@ const authStore = useAuthStore();
 const store = useProfileStore();
 
 useHead({
-    title: 'Pichet Itngam\'s portfolios',
+    title: 'Kritsada\'s portfolios',
     meta: [
-        { name: 'description', content: 'Pichet Itngam\'s portfolios.' }
+        { name: 'description', content: 'Kritsada\'s portfolios.' }
     ],
 })
 

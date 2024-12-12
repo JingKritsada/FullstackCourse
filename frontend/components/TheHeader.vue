@@ -10,12 +10,12 @@
                 />
             </div>
             <div>
-                <div class="font-bold text-xl md:text-center md:text-2xl">Pichet Itngam</div>
-                <p class="text-base md:text-center md:text-xl">Passionate self-taught learner</p>
+                <div class="font-bold text-xl md:text-center md:text-2xl">Kritsada Limsripraphan</div>
+                <p class="text-base md:text-center md:text-xl">Computer Engineering Student</p>
                 <div class="pt-2 flex flex-wrap gap-2 md:justify-center md:mt-2">
                     <BaseLink
                         size="small"
-                        to="mailto: hello@notsu.io"
+                        to="mailto: jing.kritsada@gmail.com"
                         class="md:text-base md:px-7 md:py-3 md:space-x-2"
                     >
                         <span>Email</span>
@@ -23,7 +23,7 @@
                     </BaseLink>
                     <BaseLink
                         size="small"
-                        to="https://www.linkedin.com/in/notsu/"
+                        to="https://www.linkedin.com/in/jingkritsada/"
                         class="md:text-base md:px-7 md:py-3 md:space-x-2"
                         target="blank"
                     >
