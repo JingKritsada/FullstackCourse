@@ -6,7 +6,7 @@ export default ({ authService }, config) => {
         const router = express.Router();
 
         router.post('/login', asyncHandler(login));
-        // router.post('/register', asyncHandler(register));
+        router.post('/register', asyncHandler(register));
 
         return router;
     }
