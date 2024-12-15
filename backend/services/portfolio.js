@@ -19,7 +19,7 @@ export default ({ portfolioRepo }) => {
         let portfolios = [];
 
         const sanitizedPage = Math.max(page, 1);
-        const sanitizedLimit = Math.min(limit, 10);
+        const sanitizedLimit = Math.min(limit, 12);
         const offset = (sanitizedPage - 1) * sanitizedLimit;
 
         portfolios = await portfolioRepo.getPortfolios(offset, sanitizedLimit);

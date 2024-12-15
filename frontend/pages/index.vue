@@ -12,7 +12,7 @@ useHead({
     ],
 })
 
-const limit = 2;
+const limit = 4;
 const currentPortfoliosPage = ref(1);
 
 await store.getProfile();
