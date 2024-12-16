@@ -28,7 +28,7 @@
           </BaseLink>
           <BaseLink
             size="small"
-            to="https://line.me/R/ti/p/jing.jerry"
+            to="https://line.me/ti/p/Qmb4gg96f1"
             class="md:text-base md:px-7 md:py-3 md:space-x-2"
             target="blank"
           >
