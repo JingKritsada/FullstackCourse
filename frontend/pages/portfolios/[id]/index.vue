@@ -20,7 +20,7 @@ if (!store.portfolio) {
 }
 
 useHead({
-    title: `${store.portfolio.title} | Pichet Itngam`,
+    title: `${store.portfolio.title} | Kritsada`,
     meta: [
         { name: 'description', content: store.portfolio.excerpt }
     ],
