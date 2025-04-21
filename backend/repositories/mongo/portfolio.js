@@ -27,7 +27,7 @@ export default (connection) => {
         let portfolios;
 
         try {
-            portfolios = await PortfolioModel.where({}).skip(offset).limit(limit).find();
+            portfolios = await PortfolioModel.where({}).sort({ publishedAt: -1 }).skip(offset).limit(limit).find();
         } catch (error) {
             throw new Error(error);
         }
